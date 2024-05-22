@@ -2,6 +2,7 @@
 include_once '../../config/database.php';
 include_once '../../models/Patient.php';
 
+
 $database = new Database();
 $db = $database->getConnection();
 $patient = new Patient($db);
@@ -15,9 +16,16 @@ $patients = $patient->getAllPatients();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Patients</title>
     <link rel="stylesheet" href="../../assets/css/list.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
 </head>
 <body>
+    <?php
+    include("../../includes/header.php"); ?>
+    
     <div class="container">
+    <button> <a href="add.php">
+        Add Patient
+    </a></button>
         <h1>Patients List</h1>
         <div class="card-container">
             <?php while ($row = $patients->fetch_assoc()): ?>

@@ -27,13 +27,25 @@ class Doctor {
 
     // Read doctor by ID
     public function getDoctorById($id) {
-        $sql = "SELECT * FROM doctor WHERE id = ?";
+        $sql = "SELECT id FROM doctor WHERE id = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc();
+        $row = $result->fetch_assoc();
+        return $row['id'] ?? null; // Return the ID or null if not found
     }
+    public function getDoctorNameById($id) {
+        $sql = "SELECT name FROM doctor WHERE id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['name'] ?? null; // Return the name or null if not found
+    }
+    
+    
 
     // Update doctor
     public function updateDoctor($id, $name, $specialty, $email, $phone, $address) {

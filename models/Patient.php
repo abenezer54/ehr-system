@@ -51,4 +51,11 @@ class Patient {
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+    public function getPatientRecords($patient_id) {
+        $sql = "SELECT * FROM record WHERE patient_id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("i", $patient_id);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
 }

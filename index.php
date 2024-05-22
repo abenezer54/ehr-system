@@ -5,25 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EHR System</title>
     <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to EHR System</h1>
-        <nav>
-            <ul>
-                <li><a href="views/doctor/list.php">Doctors</a></li>
-                <li><a href="views/patient/list.php">Patients</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <?php
+    include("includes/header.php"); ?>
     <div class="container">
         <h2>Home Page</h2>
+        <a href="views/doctor/list.php">View Doctors</a>
+        <a href="views/patient/list.php">View Patients</a>
         <p>This is the homepage of the EHR System.</p>
     </div>
 
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> EHR System</p>
-    </footer>
+    <?php
+    include("includes/footer.php"); ?>
 </body>
 </html>
