@@ -13,12 +13,14 @@
     include("includes/header.php"); ?>
     <div class="container">
         <h2>Home Page</h2>
-        <a href="views/doctor/list.php">View Doctors</a>
-        <a href="views/patient/list.php">View Patients</a>
-        <p>This is the homepage of the EHR System.</p>
+        <div><a href="views/doctor/list.php">View Doctors</a></div>
+        <div><a href="views/patient/list.php">View Patients</a></div>
+        <div><a href="views/doctor/doctor.php">Doctors Page</a></div>
+        <div><a href="views/user/view.php">User's Page</a></div>
     </div>
 
     <?php
     include("includes/footer.php"); ?>
+    <script src="assets/js/header.js"></script>
 </body>
 </html>

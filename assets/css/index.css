@@ -10,7 +10,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
 
-  background-image: url(../img/homepage.jpg);
+  /* background-image: url(../img/homepage.jpg); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

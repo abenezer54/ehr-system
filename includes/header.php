@@ -1,7 +1,7 @@
 <header>
     <div class="navbar">
         <div class="logo">
-            <a href="C:\Users\Asus\OneDrive\Desktop\ehr-system\index.php">Home</a>
+            <a href="C:/Users/Asus/OneDrive/Desktop/ehr-system/index.php">Home</a>
         </div>
         <div class="nav">
             <ul>
@@ -13,7 +13,7 @@
             </ul>
             <div class="menu"><i class="fa-solid fa-bars"></i></div>
         </div>
-        <a href="#" class="highlight">Download CV</a>
+        <a href="#" class="highlight">Log In</a>
         <div class="dropdown-menu">
             <ul>
                 <li><a href="#">About</a></li>

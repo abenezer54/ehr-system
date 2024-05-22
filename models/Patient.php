@@ -58,4 +58,17 @@ class Patient {
         $stmt->execute();
         return $stmt->get_result();
     }
+    public function searchPatients($query) {
+        $sql = "SELECT * FROM patient WHERE name LIKE ? OR email LIKE ? OR phone LIKE ?";
+        $stmt = $this->connection->prepare($sql);
+        $search_term = "%" . $query . "%";
+        $stmt->bind_param("sss", $search_term, $search_term, $search_term);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $patients = [];
+        while ($row = $result->fetch_assoc()) {
+            $patients[] = $row;
+        }
+        return $patients;
+    }
 }
