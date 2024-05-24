@@ -6,7 +6,7 @@
             <a href="/index.php">Home</a>
         </div>
      
-        <a href="/logout.php" class="highlight">Logout</a>
+        <a href="../../logout.php" class="highlight">Logout</a>
  
     </div>
 </header>
