@@ -1,4 +1,5 @@
 <?php
+include_once '../../includes/header.php';
 include_once '../../config/database.php';
 include_once '../../models/Patient.php';
 include_once '../../models/Doctor.php';
@@ -52,8 +53,11 @@ include_once '../../models/Doctor.php';
     $patient = new Patient($connection);
     $doctor = new Doctor($connection);
 
+    
+
     // Get patient details by ID
     $patient_data = $patient->getPatientById($patient_id);
+    
     
     // Check if patient exists
     if ($patient_data && isset($patient_data['id'])) {
@@ -86,9 +90,15 @@ include_once '../../models/Doctor.php';
                 echo "</div>";
             }
         } else {
+            
             echo "<p>No records found for this patient.</p>";
         }
     } else {
+        if ($patient_data){
+            echo "patient data";
+        
+        }
+       
         echo "Patient not found or invalid patient ID.";
     }
     ?>
