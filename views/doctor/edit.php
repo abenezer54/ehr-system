@@ -1,6 +1,7 @@
 <?php
 include_once '../../config/database.php';
 include_once '../../models/Doctor.php';
+
 // Initialize database connection
 $database = new Database();
 $connection = $database->getConnection();
@@ -28,9 +29,11 @@ if (isset($_GET['id'])) {
             
             // Update doctor
             if ($doctor->updateDoctor($id, $name, $specialty, $email, $phone, $address)) {
-                echo "Doctor updated successfully.";
-                // Redirect to list page or any other page
-                // header("Location: list.php");
+                // Set alert message
+                echo "<script>alert('Doctor updated successfully.');</script>";
+                // Redirect to list page
+                echo "<script>window.location.href = 'list.php';</script>";
+                exit; // Terminate script execution after redirection
             } else {
                 echo "Error updating doctor.";
             }
@@ -46,7 +49,7 @@ if (isset($_GET['id'])) {
 <!-- HTML form for editing doctor details -->
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=" . $id; ?>">
     <label>Name:</label>
-    <input type="text" name="name" value="<?php echo $doctor_data['name']; ?>" required><br>
+    <input type="text" name="name" value="<?php echo $doctor_data['name']; ?>" required><br>    
     <label>Specialty:</label>
     <input type="text" name="specialty" value="<?php echo $doctor_data['specialty']; ?>"><br>
     <label>Email:</label>

@@ -7,17 +7,43 @@ $db = $database->getConnection();
 $patient = new Patient($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
     $name = $_POST['name'];
-    $gender = $_POST['gender'];
+    $gender = $_POST['gender']; // This will be either 'male' or 'female'
     $date_of_birth = $_POST['date_of_birth'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
+    $password = $_POST['password'];
+    $role = 'user';
 
-    if ($patient->createPatient($name, $gender, $date_of_birth, $email, $phone, $address)) {
-        echo "Patient added successfully.";
-    } else {
-        echo "Failed to add patient.";
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Start a transaction
+    $db->begin_transaction();
+    try {
+        // Insert into users table
+        $sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("sss", $name, $hashed_password, $role);
+        $stmt->execute();
+        $stmt->close();
+
+        // Insert into patients table
+        if ($patient->createPatient($name, $gender, $date_of_birth, $email, $phone, $address)) {
+            // Commit the transaction
+            $db->commit();
+            echo "Patient added successfully.";
+        } else {
+            // Rollback the transaction
+            $db->rollback();
+            echo "Failed to add patient.";
+        }
+    } catch (Exception $e) {
+        // Rollback the transaction in case of error
+        $db->rollback();
+        echo "Error: " . $e->getMessage();
     }
 }
 ?>
@@ -35,12 +61,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form method="post" action="add.php">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
-        <label for="gender">Gender:</label>
-        <input type="text" id="gender" name="gender" required><br>
+        
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br>
+        
         <label for="date_of_birth">Date of Birth:</label>
         <input type="date" id="date_of_birth" name="date_of_birth" required><br>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
         <label for="phone">Phone:</label>
         <input type="text" id="phone" name="phone" required><br>
         <label for="address">Address:</label>

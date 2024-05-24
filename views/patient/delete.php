@@ -19,14 +19,31 @@ if (isset($_GET['id'])) {
     // Check if patient exists
     if ($patient_data) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Delete patient by ID
-            if ($patient->deletePatient($id)) {
-                echo "Patient deleted successfully.";
-                // Redirect to list page or any other page
-                header("Location: list.php");
-                exit;
-            } else {
-                echo "Error deleting patient.";
+            // Start a transaction
+            $connection->begin_transaction();
+            try {
+                $sql_user = "DELETE FROM users WHERE username = ?";
+                $stmt_user = $connection->prepare($sql_user);
+                $stmt_user->bind_param("s", $patient_data['name']);
+                $stmt_user->execute();
+                $stmt_user->close();
+                // Delete patient by ID
+                if ($patient->deletePatient($id)) {
+                    // Commit the transaction
+                    $connection->commit();
+                    echo "Patient deleted successfully.";
+                    // Redirect to list page or any other page
+                    header("Location: list.php");
+                    exit;
+                } else {
+                    // Rollback the transaction
+                    $connection->rollback();
+                    echo "Error deleting patient.";
+                }
+            } catch (Exception $e) {
+                // Rollback the transaction in case of error
+                $connection->rollback();
+                echo "Error: " . $e->getMessage();
             }
         }
     } else {

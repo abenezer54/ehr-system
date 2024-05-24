@@ -4,7 +4,7 @@ class Database {
     // Database connection properties
     private $host = "localhost";
     private $username = "root";
-    private $password = "root123";
+    private $password = "";
     private $dbname = "ehr-system";
     private $connection;
 
@@ -14,6 +14,7 @@ class Database {
 
         try {
             $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbname);
+            // echo ("Connected to the database");
         } catch (mysqli_sql_exception $exception) {
             echo "Connection error: " . $exception->getMessage();
         }

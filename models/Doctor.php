@@ -27,14 +27,15 @@ class Doctor {
 
     // Read doctor by ID
     public function getDoctorById($id) {
-        $sql = "SELECT id FROM doctor WHERE id = ?";
+        $sql = "SELECT * FROM doctor WHERE id = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        return $row['id'] ?? null; // Return the ID or null if not found
+        return $result->fetch_assoc(); // Return the entire row as an associative array
     }
+    
+
     public function getDoctorNameById($id) {
         $sql = "SELECT name FROM doctor WHERE id = ?";
         $stmt = $this->connection->prepare($sql);
@@ -62,4 +63,58 @@ class Doctor {
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+    public function searchDoctorsByName($name) {
+        $sql = "SELECT * FROM doctor WHERE name LIKE ?";
+        $name = "%$name%";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    // Search doctors by specialization
+    public function searchDoctorsBySpecialization($specialty) {
+        $sql = "SELECT * FROM doctor WHERE specialty LIKE ?";
+        $specialty = "%$specialty%";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("s", $specialty);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    // Filter doctors by specialization
+    public function filterDoctorsBySpecialization($specialty) {
+        $sql = "SELECT * FROM doctor WHERE specialty = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("s", $specialty);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    // Filter doctors by availability
+    public function filterDoctorsByAvailability($availability) {
+        $sql = "SELECT * FROM doctor WHERE availability = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("s", $availability);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    // Sort doctors by name
+    public function sortDoctorsByName() {
+        $sql = "SELECT * FROM doctor ORDER BY name";
+        $result = $this->connection->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    // Sort doctors by specialization
+    public function sortDoctorsBySpecialization() {
+        $sql = "SELECT * FROM doctor ORDER BY specialty";
+        $result = $this->connection->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
 }

@@ -2,6 +2,9 @@
 <?php
 include_once '../../config/database.php';
 include_once '../../models/Doctor.php';
+include_once '../../config/db_config.php';
+
+
 $database = new Database();
 $connection = $database->getConnection();
 
@@ -16,6 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
+    $password = $_POST['password'];
+    $role = 'staff';
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("sss", $name, $hashed_password, $role);
+    $stmt->execute();
+    $stmt->close();
 
     // Create new doctor
     if ($doctor->createDoctor($name, $specialty, $email, $phone, $address)) {
@@ -36,6 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" name="specialty"><br>
     <label>Email:</label>
     <input type="email" name="email" required><br>
+    <label>Password:</label>
+    <input type="password" name="password" required><br>
     <label>Phone:</label>
     <input type="text" name="phone"><br>
     <label>Address:</label>

@@ -1,0 +1,51 @@
+.container {
+  padding: 20px;
+}
+
+.container button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.container button :hover {
+  /* padding: 10px 20px; */
+  color: rgb(176, 213, 163);
+}
+
+.container button a {
+  color: white;
+  text-decoration: none;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  width: 30%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card p {
+  margin: 5px 0;
+}
+
+.card a {
+  margin-right: 5px;
+  color: #fcfcfc;
+  text-decoration: none;
+}
