@@ -12,7 +12,7 @@ if (isset($_SESSION['role'])){
             header("Location: views/user/view.php");
             break;
         case "staff":
-            header("Location: views/patient/view.php");
+            header("Location: views/patient/list.php");
             break;
         default:
             break;

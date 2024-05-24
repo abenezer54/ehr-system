@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Commit the transaction
             $db->commit();
             echo "Patient added successfully.";
+            header("Location: list.php");
         } else {
             // Rollback the transaction
             $db->rollback();
@@ -54,9 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Patient</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/add-patient.css">
 </head>
 <body>
+<?php include('../../includes/header.php')?>
     <h1>Add Patient</h1>
     <form method="post" action="add.php">
         <label for="name">Name:</label>
@@ -80,5 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="address" name="address" required><br>
         <button type="submit">Add Patient</button>
     </form>
+    <?php include('../../includes/footer.php')?>
 </body>
 </html>

@@ -34,15 +34,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($doctor->createDoctor($name, $specialty, $email, $phone, $address)) {
         echo "Doctor created successfully.";
         // Redirect to list page or any other page
-        // header("Location: list.php");
+         header("Location: list.php");
     } else {
         echo "Error creating doctor.";
     }
 }
 ?>
 
-<!-- HTML form for adding a new doctor -->
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Doctor</title>
+
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/add.css">
+</head>
+<body>
+  
+<?php include('../../includes/header.php')?>
+
+<form class="add-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <label>Name:</label>
     <input type="text" name="name" required><br>
     <label>Specialty:</label>
@@ -57,3 +71,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" name="address"><br>
     <input type="submit" value="Add Doctor">
 </form>
+<?php include('../../includes/footer.php')?>
+</body>
