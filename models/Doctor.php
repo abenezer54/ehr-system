@@ -45,6 +45,15 @@ class Doctor {
         $row = $result->fetch_assoc();
         return $row['name'] ?? null; // Return the name or null if not found
     }
+    public function getIdByName($username) {
+        $sql = "SELECT id FROM doctor WHERE name = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("i", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['id'] ?? null; // Return the name or null if not found
+    }
     
     
 

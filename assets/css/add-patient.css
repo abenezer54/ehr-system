@@ -1,0 +1,115 @@
+/* add-patient.css */
+
+/* General form styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 200vh; */
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form input[type="radio"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+}
+
+form input[type="radio"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+form input[type="submit"],
+form button[type="submit"] {
+  background-color: #0f5485;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 20px auto 0; /* Centers the button */
+}
+
+form input[type="submit"]:hover,
+form button[type="submit"]:hover {
+  background-color: #06345b;
+}
+
+/* Adjustments for radio buttons and labels */
+form label[for="male"],
+form label[for="female"] {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 15px;
+  font-weight: normal;
+}
+
+form label[for="male"]::after,
+form label[for="female"]::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+form input[type="radio"] + label {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  form {
+    padding: 15px;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form input[type="date"],
+  form input[type="radio"] {
+    padding: 8px;
+  }
+
+  form input[type="submit"],
+  form button[type="submit"] {
+    padding: 8px 15px;
+  }
+}

@@ -6,13 +6,13 @@ $error = "";
 if (isset($_SESSION['role'])){
     switch ($_SESSION['role']) {
         case "admin":
-            header("Location: views/doctor/view.php");
+            header("Location: views/doctor/list.php");
             break;
         case "user":
             header("Location: views/user/view.php");
             break;
         case "staff":
-            header("Location: views/patient/view.php");
+            header("Location: views/patient/list.php");
             break;
         default:
             break;

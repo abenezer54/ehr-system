@@ -15,7 +15,7 @@
   	 			<ul>
   	 				<li><a href="#">FAQ</a></li>
   	 				<li><a href="#">Get A Diagnosis</a></li>
-  	 				<li><a href="#">How it workds</a></li>
+  	 				<li><a href="#">How it works</a></li>
   	 				<li><a href="#">order status</a></li>
   	 				<li><a href="#">payment options</a></li>
   	 			</ul>
