@@ -1,4 +1,10 @@
 <?php
+include_once '../../includes/header.php';
+include_once '../../config/database.php';
+include_once '../../models/Patient.php';
+include_once '../../models/Doctor.php';
+?>
+<?php
 session_start();
 
 // Check if the user is logged in and has the role of 'user'
@@ -12,8 +18,15 @@ if (!isset($_SESSION['user_id'])) {
     echo "Patient ID not found in session.";
     exit();
 }
+// Initialize database connection
+$database = new Database();
+$connection = $database->getConnection();
 
-$patient_id = $_SESSION['user_id'];
+// Initialize Patient object
+$patient = new Patient($connection);
+$doctor = new Doctor($connection);
+
+$patient_id = $patient->getIdByName($_SESSION['username']);
 
 // Include necessary files
 include_once '../../config/database.php';
@@ -44,7 +57,6 @@ include_once '../../models/Doctor.php';
 
     // Get patient details by ID
     $patient_data = $patient->getPatientById($patient_id);
-    echo $patient_id;
     
     
     // Check if patient exists
