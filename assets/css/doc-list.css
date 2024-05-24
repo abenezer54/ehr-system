@@ -1,11 +1,29 @@
 /* list.css */
+
 /* General container styles */
+body {
+  background-color: #e7eff6;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
 .container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ddd; /* Subtle border for the entire page */
+  border-radius: 10px; /* Rounded corners for the page border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for aesthetic effect */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 h1 {
@@ -24,7 +42,7 @@ h1 {
 }
 
 .add button {
-  background-color: #0f5485;
+  background-color: #0f8577;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -39,52 +57,96 @@ h1 {
   background-color: #06345b;
 }
 
-/* Search Bar and Filter Form */
-form {
+/* Sidebar container with a showy border */
+.doc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
+  width: 300px; /* Adjust the width of the sidebar */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff; /* Background color for the sidebar */
+  border: 3px solid #0f5485; /* Showy border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for aesthetic effect */
 }
 
-form input[type="text"],
-form select {
+/* Form elements styling */
+.doc-container form {
+  display: flex;
+  align-items: center;
+  margin: 10px 0; /* Space between forms */
+}
+
+.doc-container input[type="text"] {
   padding: 10px;
   margin-right: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-family: Arial, sans-serif;
 }
 
-form button[type="submit"] {
-  background-color: #0f5485;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
+.doc-container select {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
   border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+/* Text link styling for search, filter, and sort */
+.doc-container button[type="submit"] {
+  background: none;
+  border: none;
+  color: #0f5485;
+  font-size: 16px;
   cursor: pointer;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease;
+  text-decoration: underline;
+  font-family: Arial, sans-serif;
+  margin-right: 10px; /* Add space between text links */
 }
 
-form button[type="submit"]:hover {
-  background-color: #06345b;
+.doc-container button[type="submit"]:hover {
+  color: #06345b; /* Darker color on hover */
 }
 
-.doc-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.doc-container button[type="submit"]:focus {
+  outline: none; /* Remove outline on focus */
 }
-/* Doctor Cards */
+
+/* Make sure the text links are aligned */
+.doc-container form button[type="submit"] {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: #0f5485;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.doc-container form button[type="submit"]:hover {
+  color: #06345b;
+}
+
 .card-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px; /* Added padding to the left and right */
+  box-sizing: border-box;
 }
 
 .card {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
-
+  padding: 20px;
   margin: 2px; /* Center cards horizontally with some spacing */
   width: 100%; /* Adjust width as needed */
   max-width: 800px; /* Maximum width for responsiveness */

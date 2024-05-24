@@ -42,6 +42,27 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 <body>
     <?php include("../../includes/header.php"); ?>
     <div class="container">
+        
+        <!-- Doctor Cards -->
+        <div class="card-container">
+            <?php if (!empty($doctors)): ?>
+                <?php foreach ($doctors as $row) : ?>
+                    <div class="card">
+                        <h2><?php echo $row['name']; ?></h2>
+                        <p>Email: <?php echo $row['email']; ?></p>
+                        <p>Specialty: <?php echo $row['specialty']; ?></p>
+                        <p>Phone: <?php echo $row['phone']; ?></p>
+                        <p>Address: <?php echo $row['address']; ?></p>
+                        <a href="view.php?id=<?php echo $row['id']; ?>">View</a>
+                        <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
+                        <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No doctors found.</p>
+            <?php endif; ?>
+        </div>
+        <aside>
         <div class="add">
                 <button><a href="add.php">Add Doctor</a></button>
         </div>
@@ -88,28 +109,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             <!-- Sorting -->
             <form method="GET" action="">
                 <button type="submit" name="sort" value="name">Sort by Name</button>
+                <br>
                 <button type="submit" name="sort" value="specialty">Sort by Specialization</button>
             </form>
         </div>
-        <!-- Doctor Cards -->
-        <div class="card-container">
-            <?php if (!empty($doctors)): ?>
-                <?php foreach ($doctors as $row) : ?>
-                    <div class="card">
-                        <h2><?php echo $row['name']; ?></h2>
-                        <p>Email: <?php echo $row['email']; ?></p>
-                        <p>Specialty: <?php echo $row['specialty']; ?></p>
-                        <p>Phone: <?php echo $row['phone']; ?></p>
-                        <p>Address: <?php echo $row['address']; ?></p>
-                        <a href="view.php?id=<?php echo $row['id']; ?>">View</a>
-                        <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</a>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No doctors found.</p>
-            <?php endif; ?>
-        </div>
+        </aside>
     </div>
     <?php include("../../includes/footer.php"); ?>
 </body>
