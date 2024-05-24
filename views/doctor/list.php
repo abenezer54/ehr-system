@@ -32,63 +32,65 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/list.css">
+    <!-- <link rel="stylesheet" href="../../assets/css/list.css"> -->
     <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/doc-list.css">
+
     <title>Doctor List</title>
 </head>
 <body>
     <?php include("../../includes/header.php"); ?>
     <div class="container">
-        <h1>Doctor List</h1>
-
-        <!-- Add Doctor Button -->
         <div class="add">
-            <button><a href="add.php">Add Doctor</a></button>
+                <button><a href="add.php">Add Doctor</a></button>
         </div>
 
-        <!-- Search Bar -->
-        <form method="GET" action="">
-            <input type="text" name="search_name" placeholder="Search by Name">
-            <button type="submit">Search</button>
-        </form>
+        <!-- Add Doctor Button -->
+        <div class="doc-container">
+
+            <!-- Search Bar -->
+            <form method="GET" action="">
+                <input type="text" name="search_name" placeholder="Search by Name">
+                <button type="submit">Search</button>
+            </form>
 
         <!-- Filter by Specialization -->
-        <form method="GET" action="">
-            <select name="filter_specialty">
-                <option value="">Filter by Specialization</option>
-                <option value="Cardiology">Cardiology</option>
-                <option value="Dermatology">Dermatology</option>
-                <option value="Endocrinology">Endocrinology</option>
-                <option value="Gastroenterology">Gastroenterology</option>
-                <option value="Hematology">Hematology</option>
-                <option value="Nephrology">Nephrology</option>
-                <option value="Neurology">Neurology</option>
-                <option value="Oncology">Oncology</option>
-                <option value="Ophthalmology">Ophthalmology</option>
-                <option value="Orthopedics">Orthopedics</option>
-                <option value="Pediatrics">Pediatrics</option>
-                <option value="Psychiatry">Psychiatry</option>
-                <option value="Pulmonology">Pulmonology</option>
-                <option value="Radiology">Radiology</option>
-                <option value="Rheumatology">Rheumatology</option>
-                <option value="Urology">Urology</option>
-                <option value="Dentistry">Dentistry</option>
-                <option value="General Surgery">General Surgery</option>
-                <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
-                <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
-                <option value="Plastic Surgery">Plastic Surgery</option>
-                <option value="Anesthesiology">Anesthesiology</option>
-            </select>
-            <button type="submit">Filter</button>
-        </form>
+            <form method="GET" action="">
+                <select name="filter_specialty">
+                    <option value="">Filter by Specialization</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Endocrinology">Endocrinology</option>
+                    <option value="Gastroenterology">Gastroenterology</option>
+                    <option value="Hematology">Hematology</option>
+                    <option value="Nephrology">Nephrology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Oncology">Oncology</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Psychiatry">Psychiatry</option>
+                    <option value="Pulmonology">Pulmonology</option>
+                    <option value="Radiology">Radiology</option>
+                    <option value="Rheumatology">Rheumatology</option>
+                    <option value="Urology">Urology</option>
+                    <option value="Dentistry">Dentistry</option>
+                    <option value="General Surgery">General Surgery</option>
+                    <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                    <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
+                    <option value="Plastic Surgery">Plastic Surgery</option>
+                    <option value="Anesthesiology">Anesthesiology</option>
+                </select>
+                <button type="submit">Filter</button>
+            </form>
 
-        <!-- Sorting -->
-        <form method="GET" action="">
-            <button type="submit" name="sort" value="name">Sort by Name</button>
-            <button type="submit" name="sort" value="specialty">Sort by Specialization</button>
-        </form>
-
+            <!-- Sorting -->
+            <form method="GET" action="">
+                <button type="submit" name="sort" value="name">Sort by Name</button>
+                <button type="submit" name="sort" value="specialty">Sort by Specialization</button>
+            </form>
+        </div>
         <!-- Doctor Cards -->
         <div class="card-container">
             <?php if (!empty($doctors)): ?>

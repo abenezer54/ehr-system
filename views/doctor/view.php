@@ -11,9 +11,12 @@ include_once 'session.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Details</title>
     <link rel="stylesheet" href="../../assets/css/view.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
 </head>
 <body>
+<?php include("../../includes/header.php"); ?>
 <?php
+
 // Initialize database connection
 $database = new Database();
 $connection = $database->getConnection();
