@@ -36,6 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['email'] = "Invalid email format.";
     }
 
+    // Validate phone number
+    if (!$validator->validateRequired($phone)) {
+        $errors['phone'] = "Phone number is required.";
+    } 
+    elseif (!$validator->validateStringLength($phone, 10, 15)) {
+        $errors['phone'] = "Phone number must be between 10 and 15 characters";
+    } 
+
+    elseif (!$validator->validatePattern($phone, '/^\d+$/')) {
+        $errors['phone'] = "Invalid phone number format.";
+    }
+
     if (!$validator->validateRequired($password)) {
         $errors['password'] = "Password is required.";
     } elseif (!$validator->validateStringLength($password, 8)) {
@@ -82,24 +94,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form class="add-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <label>Name:</label>
     <input type="text" name="name" required>
-    <?php if(isset($errors['name'])) echo "<span class='error'>{$errors['name']}</span>"; ?>
+    <?php if(isset($errors['name'])) echo "<span class='error' style='color: #ff9999;'>{$errors['name']}</span>"; ?>
     <br>
     <label>Specialty:</label>
     <input type="text" name="specialty"><br>
     <label>Email:</label>
     <input type="email" name="email" required>
-    <?php if(isset($errors['email'])) echo "<span class='error'>{$errors['email']}</span>"; ?>
+    <?php if(isset($errors['email'])) echo "<span class='error' style='color: #ff9999;'>{$errors['email']}</span>"; ?>
     <br>
     <label>Password:</label>
     <input type="password" name="password" required>
-    <?php if(isset($errors['password'])) echo "<span class='error'>{$errors['password']}</span>"; ?>
+    <?php if(isset($errors['password'])) echo "<span class='error' style='color: #ff9999;'>{$errors['password']}</span>"; ?>
     <br>
     <label>Phone:</label>
-    <input type="text" name="phone"><br>
+    <input type="text" name="phone">
+    <?php if(isset($errors['phone'])) echo "<span class='error' style='color: #ff9999;'>{$errors['phone']}</span>"; ?>
+    <br>
     <label>Address:</label>
     <input type="text" name="address"><br>
     <input type="submit" value="Add Doctor">
 </form>
+
 <?php include('../../includes/footer.php')?>
 </body>
 </html>
