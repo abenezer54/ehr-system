@@ -19,8 +19,9 @@ if (isset($_SESSION['role'])){
     }
 }
 else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
-    $password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
+    $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    
 
     if (empty($username) || empty($password)) {
         $error = "Username and password are required.";

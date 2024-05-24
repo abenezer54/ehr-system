@@ -35,6 +35,16 @@ class Patient {
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+    
+    public function getIdByName($username) {
+        $sql = "SELECT id FROM patient WHERE name = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("i", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['id'] ?? null; // Return the name or null if not found
+    }
 
     // Create new patient
     public function createPatient($name, $gender, $date_of_birth, $email, $phone, $address) {
