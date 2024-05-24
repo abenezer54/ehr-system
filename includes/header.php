@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="../assets/css/header.css">
 <header>
     <div class="navbar">
         <div class="logo">

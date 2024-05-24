@@ -8,12 +8,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 }
 
 // Check if the user's patient ID is set in the session
-if (!isset($_SESSION['patient_id'])) {
+if (!isset($_SESSION['user_id'])) {
     echo "Patient ID not found in session.";
     exit();
 }
 
-$patient_id = $_SESSION['patient_id'];
+$patient_id = $_SESSION['user_id'];
 
 // Include necessary files
 include_once '../../config/database.php';
@@ -40,8 +40,12 @@ include_once '../../models/Doctor.php';
     $patient = new Patient($connection);
     $doctor = new Doctor($connection);
 
+    
+
     // Get patient details by ID
     $patient_data = $patient->getPatientById($patient_id);
+    echo $patient_id;
+    
     
     // Check if patient exists
     if ($patient_data && isset($patient_data['id'])) {
@@ -74,9 +78,15 @@ include_once '../../models/Doctor.php';
                 echo "</div>";
             }
         } else {
+            
             echo "<p>No records found for this patient.</p>";
         }
     } else {
+        if ($patient_data){
+            echo "patient data";
+        
+        }
+       
         echo "Patient not found or invalid patient ID.";
     }
     ?>
