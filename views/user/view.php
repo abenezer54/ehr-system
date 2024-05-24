@@ -13,7 +13,7 @@ if (!isset($_SESSION['patient_id'])) {
     exit();
 }
 
-$patient_id = $_SESSION['patient_id'];
+$patient_id = $_SESSION['user_id'];
 
 // Include necessary files
 include_once '../../config/database.php';

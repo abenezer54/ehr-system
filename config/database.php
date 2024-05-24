@@ -4,8 +4,8 @@ class Database {
     // Database connection properties
     private $host = "localhost";
     private $username = "root";
-    private $password = "";
-    private $dbname = "ehr-system";
+    private $password = "037005";
+    private $dbname = "auth";
     private $connection;
 
     // Connect to the database
