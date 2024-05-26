@@ -8,7 +8,6 @@ $patient = new Patient($db);
 
 $search_query = isset($_GET['search']) ? $_GET['search'] : '';
 $filter_age = isset($_GET['filter_age']) ? $_GET['filter_age'] : '';
-$filter_date = isset($_GET['filter_date']) ? $_GET['filter_date'] : '';
 $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : '';
 
 // Perform search, filter, and sort operations
@@ -37,94 +36,7 @@ if (!empty($search_query)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Patients</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .all {
-            display: flex;
-        }
-        .container {
-            flex: 3;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-        .card-container {
-            display: flex;
-            width: 70%;
-            flex-direction: column;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .card {
-            background-color: #f9f9f9;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .card h2 {
-            margin: 0 0 10px;
-            font-size: 24px;
-        }
-        .card p {
-            margin: 5px 0;
-        }
-        .card a {
-            display: inline-block;
-            margin: 10px 5px 0 0;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .side {
-            flex: 1;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-left: 1px solid #ccc;
-        }
-        .button-container {
-            margin-bottom: 20px;
-        }
-        .button-container button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: left;
-        }
-        .button-container button a {
-            color: white;
-            text-decoration: none;
-            display: block;
-        }
-        .form-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .form-container input, .form-container select, .form-container button {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-container button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="../../assets/css/patients.css">
 </head>
 <body>
     <?php include("../../includes/header.php"); ?>
@@ -141,9 +53,9 @@ if (!empty($search_query)) {
                     <p><strong>Email:</strong> <?php echo htmlspecialchars($row['email']); ?></p>
                     <p><strong>Phone:</strong> <?php echo htmlspecialchars($row['phone']); ?></p>
                     <p><strong>Address:</strong> <?php echo htmlspecialchars($row['address']); ?></p>
-                    <a href="view.php?id=<?php echo htmlspecialchars($row['id']); ?>">View</a>
-                    <a href="edit.php?id=<?php echo htmlspecialchars($row['id']); ?>">Edit</a>
-                    <a href="delete.php?id=<?php echo htmlspecialchars($row['id']); ?>">Delete</a>
+                    <a class = "btn" href="view.php?id=<?php echo htmlspecialchars($row['id']); ?>">View</a>
+                    <a class = "btn" href="edit.php?id=<?php echo htmlspecialchars($row['id']); ?>">Edit</a>
+                    <a class = "btn" href="delete.php?id=<?php echo htmlspecialchars($row['id']); ?>">Delete</a>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -154,17 +66,32 @@ if (!empty($search_query)) {
                 <button><a href="list.php">View All Patients</a></button>
             </div>
             <div class="form-container">
-                <form method="GET" action="">
+            <form method="GET" action="">
                     <input type="text" name="search" placeholder="Search by name, email, phone" value="<?php echo htmlspecialchars($search_query); ?>">
                     <select name="filter_age">
                         <option value="">Filter by age</option>
-                        <option value="lt10">1-10</option>
-                        <option value="10_20">11-20</option>
-                        <option value="21_30">21-30</option>
-                        <option value="31_40">31-40</option>
-                        <option value="41_50">41-50</option>
-                        <option value="51_60">51-60</option>
-                        <option value="gt70">>70</option>
+                        <option value="lt1">< 1</option>
+                        <option value="1_5">1-5</option>
+                        <option value="6_10">6-10</option>
+                        <option value="11_15">11-15</option>
+                        <option value="16_20">16-20</option>
+                        <option value="21_25">21-25</option>
+                        <option value="26_30">26-30</option>
+                        <option value="31_35">31-35</option>
+                        <option value="36_40">36-40</option>
+                        <option value="41_45">41-45</option>
+                        <option value="46_50">46-50</option>
+                        <option value="51_55">51-55</option>
+                        <option value="56_60">56-60</option>
+                        <option value="61_65">61-65</option>
+                        <option value="66_70">66-70</option>
+                        <option value="71_75">71-75</option>
+                        <option value="76_80">76-80</option>
+                        <option value="81_85">81-85</option>
+                        <option value="86_90">86-90</option>
+                        <option value="91_95">91-95</option>
+                        <option value="96_100">96-100</option>
+                        <option value="gt100">> 100</option>
                     </select>
                     <select name="sort_by">
                         <option value="">Sort by</option>
@@ -172,9 +99,11 @@ if (!empty($search_query)) {
                         <option value="age" <?php if ($sort_by == 'age') echo 'selected'; ?>>Age</option>
                     </select>
                     <button type="submit">Apply</button>
-                </form>
+            </form>
+
             </div>
         </div>
     </div>
+    <?php include('../../includes/footer.php')?>
 </body>
 </html>

@@ -63,7 +63,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
-  width: 300px; /* Adjust the width of the sidebar */
+  width: 350px; /* Adjust the width of the sidebar */
   padding: 20px;
   box-sizing: border-box;
   background-color: #fff; /* Background color for the sidebar */
@@ -93,44 +93,6 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 5px;
   font-family: Arial, sans-serif;
-}
-
-/* Text link styling for search, filter, and sort */
-.doc-container button[type="submit"] {
-  background: none;
-  border: none;
-  color: #0f5485;
-  font-size: 16px;
-  cursor: pointer;
-  text-decoration: underline;
-  font-family: Arial, sans-serif;
-  margin-right: 10px; /* Add space between text links */
-}
-
-.doc-container button[type="submit"]:hover {
-  color: #06345b; /* Darker color on hover */
-}
-
-.doc-container button[type="submit"]:focus {
-  outline: none; /* Remove outline on focus */
-}
-
-/* Make sure the text links are aligned */
-.doc-container form button[type="submit"] {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
-  font-family: inherit;
-  font-size: inherit;
-  color: #0f5485;
-  cursor: pointer;
-  text-decoration: underline;
-  transition: color 0.3s;
-}
-
-.doc-container form button[type="submit"]:hover {
-  color: #06345b;
 }
 
 .card-container {
@@ -165,18 +127,43 @@ h1 {
 .card a {
   display: inline-block;
   margin-top: 10px;
-  margin-right: 10px;
-  color: #0f5485;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #eaeaea;
   text-decoration: none;
 }
 
 .card a:hover {
-  text-decoration: underline;
-  color: #06345b;
+  color: #eff0f2;
 }
 
 /* No doctors found message */
 .card-container p {
   margin: 20px;
   color: #888;
+}
+
+.btn {
+  background-color: #0f5485;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
 }

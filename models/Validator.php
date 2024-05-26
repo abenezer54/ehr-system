@@ -51,5 +51,32 @@
         public function validatePattern($input, $pattern) {
             return preg_match($pattern, $input);
         }
+
+        public function validateAlphabetic($input) {
+            return preg_match('/^[a-zA-Z\s]+$/', $input);
+        }
+    
+        public function validatePhoneNumber($phone) {
+            // Basic phone number validation (adjust regex as needed)
+            return preg_match('/^[0-9]{10,15}$/', $phone);
+        }
+    
+        public function validateDate($date, $format = 'Y-m-d') {
+            $d = DateTime::createFromFormat($format, $date);
+            return $d && $d->format($format) === $date;
+        }
+    
+        public function validateFutureDate($date, $format = 'Y-m-d') {
+            $d = DateTime::createFromFormat($format, $date);
+            $now = new DateTime();
+            return $d > $now;
+        }
+    
+        public function validateDateRange($date, $format, $startDate, $endDate) {
+            $d = DateTime::createFromFormat($format, $date);
+            $start = DateTime::createFromFormat($format, $startDate);
+            $end = DateTime::createFromFormat($format, $endDate);
+            return $d >= $start && $d <= $end;
+        }
     }
     ?>

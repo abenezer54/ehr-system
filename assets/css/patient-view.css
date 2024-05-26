@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto; /* Added margin for centering */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border: 1px solid #ccc; /* Added border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-top: 0; /* Added to remove default margin */
+}
+
+.record {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.record p {
+  margin: 5px 0;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input[type="date"],
+form select,
+form textarea {
+  width: calc(100% - 50px); /* Adjusted width to include padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+form input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: #dc3545;
+  margin-top: 10px;
+}
+
+.success-message {
+  color: #28a745;
+  margin-top: 10px;
+}
+
+/* CSS for edit and delete links */
+.edit-link,
+.delete-link {
+  text-decoration: none;
+  color: #fff; /* White text color */
+  background-color: #007bff; /* Blue background color */
+  padding: 8px 16px; /* Padding for button */
+  border: none; /* Remove button border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  margin: 10px 20px; /* Adjusted margin */
+  margin-top: 10px;
+}
+
+.edit-link:hover,
+.delete-link:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  text-decoration: none;
+}

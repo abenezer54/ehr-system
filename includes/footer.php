@@ -35,7 +35,7 @@ ul {
 }
 
 .footer {
-  background-color: #24262b;
+ background-color:#002B5C;
   padding: 70px 0;
   width: 100%;
   margin-top: auto; /* Ensure footer is at the bottom */

@@ -51,9 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                         <p>Specialty: <?php echo $row['specialty']; ?></p>
                         <p>Phone: <?php echo $row['phone']; ?></p>
                         <p>Address: <?php echo $row['address']; ?></p>
-                        <a href="../views/view.php?id=<?php echo $row['id']; ?>">View</a>
-                        <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</a>
+                        <a class = "btn" href="view.php?id=<?php echo $row['id']; ?>">View</a>
+                        <a class = "btn" href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
+                        <a class = "btn" href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</a>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         </div>
         <aside>
         <div class="add">
-                <button><a href="add.php">Add Doctor</a></button>
+                <button class ="btn"><a href="add.php">Add Doctor</a></button>
         </div>
 
         <!-- Add Doctor Button -->
@@ -71,44 +71,48 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             <!-- Search Bar -->
             <form method="GET" action="">
                 <input type="text" name="search_name" placeholder="Search by Name">
-                <button type="submit">Search</button>
+                <button class ="btn" type="submit">Search</button>
             </form>
 
         <!-- Filter by Specialization -->
-            <form method="GET" action="">
-                <select name="filter_specialty">
-                    <option value="">Filter by Specialization</option>
-                    <option value="Cardiology">Cardiology</option>
-                    <option value="Dermatology">Dermatology</option>
-                    <option value="Endocrinology">Endocrinology</option>
-                    <option value="Gastroenterology">Gastroenterology</option>
-                    <option value="Hematology">Hematology</option>
-                    <option value="Nephrology">Nephrology</option>
-                    <option value="Neurology">Neurology</option>
-                    <option value="Oncology">Oncology</option>
-                    <option value="Ophthalmology">Ophthalmology</option>
-                    <option value="Orthopedics">Orthopedics</option>
-                    <option value="Pediatrics">Pediatrics</option>
-                    <option value="Psychiatry">Psychiatry</option>
-                    <option value="Pulmonology">Pulmonology</option>
-                    <option value="Radiology">Radiology</option>
-                    <option value="Rheumatology">Rheumatology</option>
-                    <option value="Urology">Urology</option>
-                    <option value="Dentistry">Dentistry</option>
-                    <option value="General Surgery">General Surgery</option>
-                    <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
-                    <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
-                    <option value="Plastic Surgery">Plastic Surgery</option>
-                    <option value="Anesthesiology">Anesthesiology</option>
-                </select>
-                <button type="submit">Filter</button>
-            </form>
+        <form method="GET" action="">
+    <select name="filter_specialty">
+        <option value="">Filter by Specialization</option>
+        <option value="Anesthesiology">Anesthesiology</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Clinical Laboratory Scientists">Clinical Laboratory Scientists</option>
+        <option value="Dentistry">Dentistry</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Endocrinology">Endocrinology</option>
+        <option value="Gastroenterology">Gastroenterology</option>
+        <option value="General Surgery">General Surgery</option>
+        <option value="Hematology">Hematology</option>
+        <option value="Nephrology">Nephrology</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Nurse">Nurse</option>
+        <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+        <option value="Oncology">Oncology</option>
+        <option value="Ophthalmology">Ophthalmology</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Plastic Surgery">Plastic Surgery</option>
+        <option value="Psychiatry">Psychiatry</option>
+        <option value="Pulmonology">Pulmonology</option>
+        <option value="Radiologists">Radiologists</option>
+        <option value="Radiology">Radiology</option>
+        <option value="Rheumatology">Rheumatology</option>
+        <option value="Urology">Urology</option>
+    </select>
+    <button class ="btn" type="submit">Filter</button>
+</form>
+
 
             <!-- Sorting -->
             <form method="GET" action="">
-                <button type="submit" name="sort" value="name">Sort by Name</button>
-                <br>
-                <button type="submit" name="sort" value="specialty">Sort by Specialization</button>
+                <button class ="btn sort" type="submit" name="sort" value="name">Sort by Name</button>
+                <br><br><br>
+                <button class ="btn sort" type="submit" name="sort" value="specialty">Sort by Specialization</button>
             </form>
         </div>
         </aside>

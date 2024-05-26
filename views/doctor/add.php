@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
-    <link rel="stylesheet" href="../../assets/css/add.css">
+    <link rel="stylesheet" href="../../assets/css/add-doctor.css">
 </head>
 <body>
   
@@ -97,7 +97,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php if(isset($errors['name'])) echo "<span class='error' style='color: #ff9999;'>{$errors['name']}</span>"; ?>
     <br>
     <label>Specialty:</label>
-    <input type="text" name="specialty"><br>
+    <select name="specialty">
+        <option value="">Select Specialization</option>
+        <option value="Anesthesiology">Anesthesiology</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Clinical Laboratory Scientists">Clinical Laboratory Scientists</option>
+        <option value="Dentistry">Dentistry</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Endocrinology">Endocrinology</option>
+        <option value="Gastroenterology">Gastroenterology</option>
+        <option value="General Surgery">General Surgery</option>
+        <option value="Hematology">Hematology</option>
+        <option value="Nephrology">Nephrology</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Nurse">Nurse</option>
+        <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+        <option value="Oncology">Oncology</option>
+        <option value="Ophthalmology">Ophthalmology</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Plastic Surgery">Plastic Surgery</option>
+        <option value="Psychiatry">Psychiatry</option>
+        <option value="Pulmonology">Pulmonology</option>
+        <option value="Radiologists">Radiologists</option>
+        <option value="Radiology">Radiology</option>
+        <option value="Rheumatology">Rheumatology</option>
+        <option value="Urology">Urology</option>
+    </select>
+    <br>
     <label>Email:</label>
     <input type="email" name="email" required>
     <?php if(isset($errors['email'])) echo "<span class='error' style='color: #ff9999;'>{$errors['email']}</span>"; ?>

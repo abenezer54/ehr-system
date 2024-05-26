@@ -125,5 +125,6 @@ class Doctor {
         $result = $this->connection->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
+
 }

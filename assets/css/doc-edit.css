@@ -1,0 +1,70 @@
+/* edit.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Light grey background */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 35px auto;
+  padding: 20px;
+  background-color: #fff; /* White background */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+.error {
+  color: #ff6666; /* Light red */
+  font-size: 14px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+  }
+}

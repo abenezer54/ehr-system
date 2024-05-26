@@ -4,6 +4,7 @@ li {
 }
 
 header a {
+
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
@@ -17,7 +18,7 @@ header {
   width: 100%;
   position: relative;
   padding: 0 2rem;
-  background-color: #000;
+  background-color:#002B5C;
 }
 
 .navbar {
@@ -57,7 +58,7 @@ header {
 }
 
 .highlight {
-  background-color: #0ef;
+  background-color: #0f8577;
   color: #fff;
   padding: 0.5rem 1rem;
   border: none;
@@ -159,10 +160,10 @@ header {
 <header>
     <div class="navbar">
         <div class="logo">
-            <a href="/index.php">Home</a>
+            <a href="/ehr-system">Home</a>
         </div>
      
-        <a href="../../logout.php" class="highlight">Logout</a>
+        <a href="/ehr-system/logout.php" class="highlight">Logout</a>
  
     </div>
 </header>
