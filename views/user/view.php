@@ -7,6 +7,7 @@ include_once '../../models/Doctor.php';
 <?php
 session_start();
 
+
 // Check if the user is logged in and has the role of 'user'
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     header("Location: /ehr-system/404.php");
@@ -57,8 +58,6 @@ include_once '../../models/Doctor.php';
 
     // Get patient details by ID
     $patient_data = $patient->getPatientById($patient_id);
-    
-    
     // Check if patient exists
     if ($patient_data && isset($patient_data['id'])) {
         // Display patient details

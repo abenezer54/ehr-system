@@ -39,7 +39,7 @@ class Patient {
     public function getIdByName($username) {
         $sql = "SELECT id FROM patient WHERE name = ?";
         $stmt = $this->connection->prepare($sql);
-        $stmt->bind_param("i", $username);
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();

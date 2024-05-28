@@ -1,4 +1,5 @@
 <?php
+
 include_once '../../config/database.php';
 include_once '../../models/Doctor.php';
 include_once '../../config/db_config.php';
@@ -57,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If there are no validation errors, proceed with insertion
     if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        
 
         $sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
         $stmt = $connection->prepare($sql);

@@ -44,7 +44,7 @@ else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Redirect based on user role
                 switch ($role) {
                     case "admin":
-                        header("Location: views/doctor/list.php");
+                        header("Location: views/admin-homepage.php");
                         break;
                     case "user":
                         header("Location: views/user/view.php");

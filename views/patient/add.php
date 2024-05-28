@@ -18,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $password = $_POST['password'];
     $role = 'user';
+    $currentDate = new DateTime();
+    $date300YearsAgo = (new DateTime())->sub(new DateInterval('P300Y'));
+    
 
     // Validate form inputs
     $errors = array();
@@ -39,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['date_of_birth'] = "Invalid date format.";
     } elseif ($validator->validateFutureDate($date_of_birth)) {
         $errors['date_of_birth'] = "Date of birth cannot be in the future.";
-    } elseif ($validator->validateDateRange($date_of_birth, 'Y-m-d', date('Y-m-d', strtotime('-300 years')), date('Y-m-d'))) {
+    } elseif (!$validator->validateDateRange($date_of_birth, 'Y-m-d', $date300YearsAgo->format('Y-m-d'), $currentDate->format('Y-m-d'))) {
         $errors['date_of_birth'] = "Date of birth should be within the last 300 years.";
     }
 
